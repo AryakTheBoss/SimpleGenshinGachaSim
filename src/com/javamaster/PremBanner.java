@@ -9,7 +9,7 @@ public class PremBanner implements Banner {
     private int pity4Pulls;
     private Random gen;
     private Counter itemCounter;
-    private int numOf3Stars;
+    //private int numOf3Stars;
 
     private static final String[] star5 = {"Diluc","Jean","Keqing","Mona","Qiqi",
             "Amos\' Bow","Aquila Favonia","Kunwu\'s Iris Rift","Lost Prayer TtSW","Primoridial JWS","Skyward Atlas","Skyward Blade","Skyward Harp","Skyward Pride","Skyward Spine","Wolf\'s Gravestone"};
@@ -23,7 +23,7 @@ public class PremBanner implements Banner {
         pity4Pulls = 0;
         gen = new Random();
         itemCounter = new Counter();
-        numOf3Stars = 0;
+       // numOf3Stars = 0;
     }
 
     @Override
@@ -40,13 +40,14 @@ String name;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star5[gen.nextInt(star5.length)];
                     itemCounter.countItem(new ItemCount(5,name));
-                    return "* * * * *  "+name;
+                    return "* * * * * "+name;
                 }else if(pity() == 2){
                     pity4Pulls = 0;
+                    pity5Pulls++;
                   //  System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star4[gen.nextInt(star4.length)];
                     itemCounter.countItem(new ItemCount(4,name));
-                    return "* * * *  "+name;
+                    return "* * * * "+name;
                 }
 
 
@@ -55,19 +56,20 @@ String name;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star5[gen.nextInt(star5.length)];
                     itemCounter.countItem(new ItemCount(5,name));
-                    return "* * * * *  "+name;
+                    return "* * * * * "+name;
                 }else if(n >= 31 && n <= 286){ //255 vals
                     pity4Pulls = 0;
+                    pity5Pulls++;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star4[gen.nextInt(star4.length)];
                     itemCounter.countItem(new ItemCount(4,name));
-                    return "* * * *  "+name;
+                    return "* * * * "+name;
                 }else{
                     pity5Pulls++;
                     pity4Pulls++;
                  //   System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
-                    numOf3Stars++;
-                    return "* * *  "+star3[gen.nextInt(star3.length)];
+                   // numOf3Stars++;
+                    return "* * * "+star3[gen.nextInt(star3.length)];
                 }
 
 
@@ -79,6 +81,7 @@ String name;
         pity5Pulls = 0;
         pity4Pulls = 0;
         itemCounter.reset();
+       // numOf3Stars = 0;
     }
 
         public void setPities(int four,int five){
@@ -94,7 +97,7 @@ String name;
     }
     public void printStats(){
         itemCounter.printStats();
-        System.out.println("3 Stars Pulled: "+numOf3Stars);
+        //System.out.println("3 Stars Pulled: "+numOf3Stars);
     }
     private int pity(){
 

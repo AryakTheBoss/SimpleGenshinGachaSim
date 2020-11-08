@@ -13,6 +13,7 @@ public class Main {
         int stars5 = 0;
         int stars4 = 0;
         PremBanner pb = new PremBanner();
+        String re = "";
         while(true) {
             System.out.println("Genshin Pull Sim 2.0 // ~~~~");
             System.out.println("\n1. Pull Single");
@@ -30,13 +31,24 @@ public class Main {
 
                 case 1:
 
-                    System.out.println(pb.pull()); //Pull a single
+                     re = pb.pull();
+                    if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
+                        System.out.println("~~~~!!  "+re+"  !!~~~~");
+                    }else{
+                        System.out.println(re);
+                    }
 
 
                     break;
                 case 2:
+
                     for(int i=0;i<10;i++){
-                        System.out.println(pb.pull()); //Pull 10 times
+                        re = pb.pull();
+                        if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
+                            System.out.println("~~~~!!  "+re+"  !!~~~~");
+                        }else{
+                            System.out.println(re);
+                        }
                     }
 
                     break;
@@ -44,7 +56,12 @@ public class Main {
                     System.out.println("Enter number of pulls: ");
                     int k = s.nextInt();
                     for(int i=0;i<k;i++){
-                        System.out.println(pb.pull()); //Pull k times
+                        re = pb.pull();
+                        if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
+                            System.out.println("~~~~!!  "+re+"  !!~~~~");
+                        }else{
+                            System.out.println(re);
+                        }
                     }
 
                     break;
