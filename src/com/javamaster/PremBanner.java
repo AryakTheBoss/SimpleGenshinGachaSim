@@ -8,6 +8,8 @@ public class PremBanner implements Banner {
     private int pity5Pulls;
     private int pity4Pulls;
     private Random gen;
+    private Counter itemCounter;
+    private int numOf3Stars;
 
     private static final String[] star5 = {"Diluc","Jean","Keqing","Mona","Qiqi",
             "Amos\' Bow","Aquila Favonia","Kunwu\'s Iris Rift","Lost Prayer TtSW","Primoridial JWS","Skyward Atlas","Skyward Blade","Skyward Harp","Skyward Pride","Skyward Spine","Wolf\'s Gravestone"};
@@ -20,6 +22,8 @@ public class PremBanner implements Banner {
         pity5Pulls = 0;
         pity4Pulls = 0;
         gen = new Random();
+        itemCounter = new Counter();
+        numOf3Stars = 0;
     }
 
     @Override
@@ -27,33 +31,42 @@ public class PremBanner implements Banner {
 
 
             int n;
-
+String name;
                 totalCurrentPulls++;
                 n = gen.nextInt(5000);
-
+               // System.out.println("Result of pity() = "+pity()+" Pity4Pulls+1 = "+(pity4Pulls+1)+"<-- that %10 = "+((pity4Pulls+1)%10));
                 if(pity() == 1){
                     pity5Pulls = 0;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
-                    return "* * * * *  "+star5[gen.nextInt(star5.length)];
+                    name = star5[gen.nextInt(star5.length)];
+                    itemCounter.countItem(new ItemCount(5,name));
+                    return "* * * * *  "+name;
                 }else if(pity() == 2){
                     pity4Pulls = 0;
                   //  System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
-                    return "* * * *  "+star4[gen.nextInt(star4.length)];
+                    name = star4[gen.nextInt(star4.length)];
+                    itemCounter.countItem(new ItemCount(4,name));
+                    return "* * * *  "+name;
                 }
 
 
                 if(n >= 0 && n <= 30){
                     pity5Pulls = 0;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
-                    return "* * * * *  "+star5[gen.nextInt(star5.length)];
+                    name = star5[gen.nextInt(star5.length)];
+                    itemCounter.countItem(new ItemCount(5,name));
+                    return "* * * * *  "+name;
                 }else if(n >= 31 && n <= 286){ //255 vals
                     pity4Pulls = 0;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
-                    return "* * * *  "+star4[gen.nextInt(star4.length)];
+                    name = star4[gen.nextInt(star4.length)];
+                    itemCounter.countItem(new ItemCount(4,name));
+                    return "* * * *  "+name;
                 }else{
                     pity5Pulls++;
                     pity4Pulls++;
                  //   System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
+                    numOf3Stars++;
                     return "* * *  "+star3[gen.nextInt(star3.length)];
                 }
 
@@ -65,6 +78,7 @@ public class PremBanner implements Banner {
         totalCurrentPulls = 0;
         pity5Pulls = 0;
         pity4Pulls = 0;
+        itemCounter.reset();
     }
     public void setRNGSeed(long seed){
         gen.setSeed(seed);
@@ -76,14 +90,19 @@ public class PremBanner implements Banner {
     public int getPulls(){
         return totalCurrentPulls;
     }
+
     public void printPity(){
         System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
     }
+    public void printStats(){
+        itemCounter.printStats();
+        System.out.println("3 Stars Pulled: "+numOf3Stars);
+    }
     public int pity(){
 
-        if(pity5Pulls % 90 == 0 && pity5Pulls != 0){
+        if((pity5Pulls+1) % 90 == 0){
             return 1; //5 star pity
-        }else if(pity4Pulls % 10 == 0 && pity4Pulls != 0){
+        }else if((pity4Pulls+1) % 10 == 0){
             return 2; //4 star pity
         }else {
             return 0;
