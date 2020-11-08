@@ -80,11 +80,9 @@ public class Main {
                         pb.printPity();
                     break;
                 case 6:
-                    System.out.println("\n"+"STATS: ");
+
                     pb.printStats();
-                    System.out.println("\nPulls So far: "+pb.getPulls());
-                    System.out.println("Primogems Spent: "+(pb.getPulls()*160));
-                    System.out.println("APPROX ~$"+((((float)pb.getPulls()*160.0)/(6480.0+1600.0))*106.61)+"\n");
+
                     break;
                 case 7:
                     System.out.println("Reset Pulls.");

@@ -96,7 +96,11 @@ String name;
         System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
     }
     public void printStats(){
+        System.out.println("\n"+"STATS: ");
         itemCounter.printStats();
+        System.out.println("\nPulls So far: "+totalCurrentPulls);
+        System.out.println("Primogems Spent: "+(totalCurrentPulls*160));
+        System.out.println("APPROX ~$"+((((float)totalCurrentPulls*160.0)/(6480.0+1600.0))*106.61)+"\n");
         //System.out.println("3 Stars Pulled: "+numOf3Stars);
     }
     private int pity(){
