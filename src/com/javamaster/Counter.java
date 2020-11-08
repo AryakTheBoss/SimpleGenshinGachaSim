@@ -27,7 +27,10 @@ public class Counter {
         }
     public void printStats(){
 
-
+        if(stats.isEmpty()){
+            System.out.println("You have no pulls lol");
+            return;
+        }
         for(ItemCount item : stats){
             System.out.println(item);
         }
