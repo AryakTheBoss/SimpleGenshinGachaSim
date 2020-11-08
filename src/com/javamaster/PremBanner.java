@@ -80,9 +80,7 @@ String name;
         pity4Pulls = 0;
         itemCounter.reset();
     }
-    public void setRNGSeed(long seed){
-        gen.setSeed(seed);
-    }
+
         public void setPities(int four,int five){
         pity4Pulls = four;
         pity5Pulls = five;
@@ -98,7 +96,7 @@ String name;
         itemCounter.printStats();
         System.out.println("3 Stars Pulled: "+numOf3Stars);
     }
-    public int pity(){
+    private int pity(){
 
         if((pity5Pulls+1) % 90 == 0){
             return 1; //5 star pity

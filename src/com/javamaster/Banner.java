@@ -2,8 +2,14 @@ package com.javamaster;
 
 public interface Banner {
 
-    public String pull();
 
+
+    String pull();
+    void reset();
+    void setPities(int four,int five);
+    int getPulls();
+    void printPity();
+    void printStats();
 
 
 }

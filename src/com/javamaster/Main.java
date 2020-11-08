@@ -30,45 +30,33 @@ public class Main {
 
                 case 1:
 
-                    System.out.println(pb.pull());
-                    System.out.println("\n"+"STATS: ");
-                    pb.printStats();
-                    System.out.println("\nPulls So far: "+pb.getPulls());
-                    System.out.println("Primogems Spent: "+(pb.getPulls()*160));
-                    System.out.println("APPROX ~$"+((((float)pb.getPulls()*160.0)/(6480.0+1600.0))*106.61)+"\n");
+                    System.out.println(pb.pull()); //Pull a single
+
 
                     break;
                 case 2:
                     for(int i=0;i<10;i++){
-                        System.out.println(pb.pull());
+                        System.out.println(pb.pull()); //Pull 10 times
                     }
-                    System.out.println("\n"+"STATS: ");
-                    pb.printStats();
-                    System.out.println("\nPulls So far: "+pb.getPulls());
-                    System.out.println("Primogems Spent: "+(pb.getPulls()*160));
-                    System.out.println("APPROX ~$"+((((float)pb.getPulls()*160.0)/(6480.0+1600.0))*106.61)+"\n");
+
                     break;
                 case 3:
                     System.out.println("Enter number of pulls: ");
                     int k = s.nextInt();
                     for(int i=0;i<k;i++){
-                        System.out.println(pb.pull());
+                        System.out.println(pb.pull()); //Pull k times
                     }
-                    System.out.println("\n"+"STATS: ");
-                    pb.printStats();
-                    System.out.println("\nPulls So far: "+pb.getPulls());
-                    System.out.println("Primogems Spent: "+(pb.getPulls()*160));
-                    System.out.println("APPROX ~$"+((((float)pb.getPulls()*160.0)/(6480.0+1600.0))*106.61)+"\n");
+
                     break;
                 case 4:
                     System.out.println("Enter 4 or 5: ");
                     int y = s.nextInt();
                     if(y == 4){
-                        pb.setPities(10,0);
+                        pb.setPities(9,0); //next item will be 4 star
                     }else if(y == 5){
-                        pb.setPities(0,90);
+                        pb.setPities(0,89); //next item will be 5 star
                     }else{
-                        pb.setPities(10,90);
+                        pb.setPities(9,89); //next item with be a 5 star followed by 4 star
                     }
                     break;
                 case 5:
