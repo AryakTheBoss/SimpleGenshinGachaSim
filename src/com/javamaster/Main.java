@@ -12,10 +12,25 @@ public class Main {
         int choice = 0;
         int stars5 = 0;
         int stars4 = 0;
-        PremBanner pb = new PremBanner();
+        System.out.println("Genshin Pull Sim 2.0 // ~~~~");
+        System.out.println("1. Standard");
+        System.out.println("2. Klee");
+        System.out.println("Pick Banner to Summon from: ");
+        int j = s.nextInt();
+        Banner bann = null;
+        if(j == 1){
+            bann = new PremBanner();
+        }else if(j == 2){
+            bann = new KleeBanner();
+        }else{
+            System.out.println("Unknown option picked. set to default banner. You can change in the next Menu.");
+        }
+
         String re = "";
         while(true) {
+
             System.out.println("Genshin Pull Sim 2.0 // ~~~~");
+            System.out.println("CURRENT BANNER: "+(bann instanceof PremBanner ? "Standard Banner":"Klee Banner")+"\n");
             System.out.println("\n1. Pull Single");
             System.out.println("2. Pull Multi");
             System.out.println("3. Pull Custom");
@@ -23,7 +38,8 @@ public class Main {
             System.out.println("5. Check Pity Counters");
             System.out.println("6. Check Stats");
             System.out.println("7. Reset");
-            System.out.println("8. Quit");
+            System.out.println("8. Change Banner (Copies Stats)");
+            System.out.println("9. Quit");
             choice = s.nextInt();
 
 
@@ -31,7 +47,7 @@ public class Main {
 
                 case 1:
 
-                     re = pb.pull();
+                     re = bann.pull();
                     if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
                         System.out.println("~~~~!!  "+re+"  !!~~~~");
                     }else{
@@ -43,7 +59,7 @@ public class Main {
                 case 2:
 
                     for(int i=0;i<10;i++){
-                        re = pb.pull();
+                        re = bann.pull();
                         if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
                             System.out.println("~~~~!!  "+re+"  !!~~~~");
                         }else{
@@ -56,7 +72,7 @@ public class Main {
                     System.out.println("Enter number of pulls: ");
                     int k = s.nextInt();
                     for(int i=0;i<k;i++){
-                        re = pb.pull();
+                        re = bann.pull();
                         if(re.substring(0,re.lastIndexOf("*")+1).equals("* * * * *")){
                             System.out.println("~~~~!!  "+re+"  !!~~~~");
                         }else{
@@ -69,26 +85,43 @@ public class Main {
                     System.out.println("Enter 4 or 5: ");
                     int y = s.nextInt();
                     if(y == 4){
-                        pb.setPities(9,0); //next item will be 4 star
+                        bann.setPities(9,0); //next item will be 4 star
                     }else if(y == 5){
-                        pb.setPities(0,89); //next item will be 5 star
+                        bann.setPities(0,89); //next item will be 5 star
                     }else{
-                        pb.setPities(9,89); //next item with be a 5 star followed by 4 star
+                        bann.setPities(9,89); //next item with be a 5 star followed by 4 star
                     }
                     break;
                 case 5:
-                        pb.printPity();
+                        bann.printPity();
                     break;
                 case 6:
 
-                    pb.printStats();
+                    bann.printStats();
 
                     break;
                 case 7:
                     System.out.println("Reset Pulls.");
-                    pb.reset();
+                    bann.reset();
                     break;
                 case 8:
+                    System.out.println("Pick Banner to Summon from: ");
+                    System.out.println("1. Standard");
+                    System.out.println("2. Klee");
+                    j=s.nextInt();
+                    if(j == 1){
+                        Counter c = bann.getItemCounter();
+                        bann = new PremBanner();
+                        bann.copyCount(c);
+                    }else if(j == 2){
+                        Counter c = bann.getItemCounter();
+                        bann = new KleeBanner();
+                        bann.copyCount(c);
+                    }else{
+                        System.out.println("Invalid. Staying on Current Banner.");
+                    }
+                    break;
+                case 9:
                     System.exit(0);
                     break;
                 default:

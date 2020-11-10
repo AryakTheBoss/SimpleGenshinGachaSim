@@ -1,10 +1,11 @@
 package com.javamaster;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class PremBanner implements Banner {
 
-    private int totalCurrentPulls;
+
     private int pity5Pulls;
     private int pity4Pulls;
     private Random gen;
@@ -18,7 +19,7 @@ public class PremBanner implements Banner {
     private static final String[]  star3 = {"Slingshot","Sharpshooters Oath","Raven Bow","Emerald Orb","Thrilling ToDS","Magic Guide","Black Tassel","Debate Club","BloodTainted Greatsword","Ferrous Shadow","Skyrider Sword","Harbinger of Dawn","Cool Steel"};
 //5star = 0.6% , 4star = 5.1%,  3star = 94.3%
     public PremBanner(){
-        totalCurrentPulls = 0;
+
         pity5Pulls = 0;
         pity4Pulls = 0;
         gen = new Random();
@@ -32,7 +33,7 @@ public class PremBanner implements Banner {
 
             int n;
 String name;
-                totalCurrentPulls++;
+                itemCounter.incrementPulls();
                 n = gen.nextInt(5000);
                // System.out.println("Result of pity() = "+pity()+" Pity4Pulls+1 = "+(pity4Pulls+1)+"<-- that %10 = "+((pity4Pulls+1)%10));
                 if(pity() == 1){
@@ -77,7 +78,7 @@ String name;
 
     }
     public void reset(){
-        totalCurrentPulls = 0;
+
         pity5Pulls = 0;
         pity4Pulls = 0;
         itemCounter.reset();
@@ -88,9 +89,7 @@ String name;
         pity4Pulls = four;
         pity5Pulls = five;
         }
-    public int getPulls(){
-        return totalCurrentPulls;
-    }
+
 
     public void printPity(){
         System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
@@ -98,11 +97,21 @@ String name;
     public void printStats(){
         System.out.println("\n"+"STATS: ");
         itemCounter.printStats();
-        System.out.println("\nPulls So far: "+totalCurrentPulls);
-        System.out.println("Primogems Spent: "+(totalCurrentPulls*160));
-        System.out.println("APPROX ~$"+((((float)totalCurrentPulls*160.0)/(6480.0+1600.0))*106.61)+"\n");
+        System.out.println("\nPulls So far: "+itemCounter.getTotalCurrentPulls());
+        System.out.println("Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160));
+        System.out.println("Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n");
         //System.out.println("3 Stars Pulled: "+numOf3Stars);
     }
+
+
+    @Override
+    public void copyCount(Counter ic) {
+        itemCounter = ic;
+    }
+    public Counter getItemCounter(){
+        return itemCounter;
+    }
+
     private int pity(){
 
         if((pity5Pulls+1) % 90 == 0){

@@ -5,11 +5,20 @@ import java.util.ArrayList;
 public class Counter {
 
     private ArrayList<ItemCount> stats = new ArrayList<ItemCount>();
+    private int totalCurrentPulls;
 
     public Counter(){
-
+    totalCurrentPulls = 0;
     }
-
+    public float estimateDollars(){
+        return ((((float)totalCurrentPulls*160.0F)/(6480.0F+1600.0F))*106.61F);
+    }
+    public void incrementPulls(){
+        totalCurrentPulls++;
+    }
+    public int getTotalCurrentPulls(){
+        return totalCurrentPulls;
+    }
     public void countItem(ItemCount i){
         for(ItemCount item : stats){
             if(item.equals(i)){
@@ -23,6 +32,7 @@ public class Counter {
         public void reset(){
 
                 stats.clear();
+                totalCurrentPulls = 0;
 
         }
     public void printStats(){
@@ -38,5 +48,6 @@ public class Counter {
 
 
     }
+
 
 }
