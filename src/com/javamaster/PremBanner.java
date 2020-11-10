@@ -10,6 +10,7 @@ public class PremBanner implements Banner {
     private int pity4Pulls;
     private Random gen;
     private Counter itemCounter;
+    private int currentBannerPulls;
     //private int numOf3Stars;
 
     private static final String[] star5 = {"Diluc","Jean","Keqing","Mona","Qiqi",
@@ -24,6 +25,7 @@ public class PremBanner implements Banner {
         pity4Pulls = 0;
         gen = new Random();
         itemCounter = new Counter();
+        currentBannerPulls = 0;
        // numOf3Stars = 0;
     }
 
@@ -34,6 +36,7 @@ public class PremBanner implements Banner {
             int n;
 String name;
                 itemCounter.incrementPulls();
+                currentBannerPulls++;
                 n = gen.nextInt(5000);
                // System.out.println("Result of pity() = "+pity()+" Pity4Pulls+1 = "+(pity4Pulls+1)+"<-- that %10 = "+((pity4Pulls+1)%10));
                 if(pity() == 1){
@@ -97,7 +100,7 @@ String name;
     public void printStats(){
         System.out.println("\n"+"STATS: ");
         itemCounter.printStats();
-        System.out.println("\nPulls So far: "+itemCounter.getTotalCurrentPulls());
+        System.out.println("\nTotal Pulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls);
         System.out.println("Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160));
         System.out.println("Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n");
         //System.out.println("3 Stars Pulled: "+numOf3Stars);

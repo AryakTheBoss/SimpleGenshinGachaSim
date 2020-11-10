@@ -12,6 +12,7 @@ public class KleeBanner implements Banner { //TODO
     private boolean promo4G;
     private Random gen;
     private Counter itemCounter;
+    private int currentBannerPulls;
     private static final String[] star5 = {"Diluc","Jean","Keqing","Mona","Qiqi"};//Klee, 4* Sucrose, Noelle, Xingqiu
     private static final String[] star4Promo = {"Sucrose","Noelle","Xingqiu"};
     private static final String[] star4 = {"Chongyun","Bennett","Fischl","Ningguang","Beidou","Xiangling","Amber","Razor","Kaeya","Barbara","Lisa",
@@ -27,6 +28,7 @@ public class KleeBanner implements Banner { //TODO
         itemCounter = new Counter();
         promo4G = false;
         promo5G = false;
+        currentBannerPulls = 0;
     }
 
     @Override
@@ -43,6 +45,7 @@ public class KleeBanner implements Banner { //TODO
         int n;
         String name;
         itemCounter.incrementPulls();
+        currentBannerPulls++;
         n = gen.nextInt(5000);
         // System.out.println("Result of pity() = "+pity()+" Pity4Pulls+1 = "+(pity4Pulls+1)+"<-- that %10 = "+((pity4Pulls+1)%10));
         if(pity() == 1){
@@ -182,7 +185,7 @@ public class KleeBanner implements Banner { //TODO
     public void printStats() {
         System.out.println("\n"+"STATS: ");
         itemCounter.printStats();
-        System.out.println("\nPulls So far: "+itemCounter.getTotalCurrentPulls());
+        System.out.println("\nPulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls);
         System.out.println("Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160));
         System.out.println("Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n");
     }

@@ -24,6 +24,7 @@ public class Main {
             bann = new KleeBanner();
         }else{
             System.out.println("Unknown option picked. set to default banner. You can change in the next Menu.");
+            bann = new PremBanner();
         }
 
         String re = "";
