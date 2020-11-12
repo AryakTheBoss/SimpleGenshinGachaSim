@@ -58,8 +58,8 @@ public class KleeBanner implements Banner { //TODO
                 itemCounter.countItem(new ItemCount(5,name));
                 return "* * * * * "+name;
             }
-            int fiftyfifty = gen.nextInt(1);
-            if(fiftyfifty == 1){
+            boolean fiftyfifty = gen.nextBoolean();
+            if(fiftyfifty){
                 promo5G = false;
                 name = "Klee";
                 itemCounter.countItem(new ItemCount(5,name));
@@ -80,8 +80,8 @@ public class KleeBanner implements Banner { //TODO
                 itemCounter.countItem(new ItemCount(4,name));
                 return "* * * * "+name;
             }
-            int fiftyfifty = gen.nextInt(1);
-            if(fiftyfifty == 1){
+            boolean fiftyfifty = gen.nextBoolean();
+            if(fiftyfifty){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
                 itemCounter.countItem(new ItemCount(4,name));
@@ -104,8 +104,8 @@ public class KleeBanner implements Banner { //TODO
                 itemCounter.countItem(new ItemCount(5,name));
                 return "* * * * * "+name;
             }
-            int fiftyfifty = gen.nextInt(1);
-            if(fiftyfifty == 1){
+            boolean fiftyfifty = gen.nextBoolean();
+            if(fiftyfifty){
                 promo5G = false;
                 name = "Klee";
                 itemCounter.countItem(new ItemCount(5,name));
@@ -126,8 +126,8 @@ public class KleeBanner implements Banner { //TODO
                 itemCounter.countItem(new ItemCount(4,name));
                 return "* * * * "+name;
             }
-            int fiftyfifty = gen.nextInt(1);
-            if(fiftyfifty == 1){
+            boolean fiftyfifty = gen.nextBoolean();
+            if(fiftyfifty){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
                 itemCounter.countItem(new ItemCount(4,name));

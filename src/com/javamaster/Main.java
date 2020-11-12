@@ -15,6 +15,7 @@ public class Main {
         System.out.println("Genshin Pull Sim 2.0 // ~~~~");
         System.out.println("1. Standard");
         System.out.println("2. Klee");
+        System.out.println("3. Childe");
         System.out.println("Pick Banner to Summon from: ");
         int j = s.nextInt();
         Banner bann = null;
@@ -22,6 +23,8 @@ public class Main {
             bann = new PremBanner();
         }else if(j == 2){
             bann = new KleeBanner();
+        }else if(j == 3){
+            bann = new ChildeBanner();
         }else{
             System.out.println("Unknown option picked. set to default banner. You can change in the next Menu.");
             bann = new PremBanner();
@@ -31,7 +34,7 @@ public class Main {
         while(true) {
 
             System.out.println("Genshin Pull Sim 2.0 // ~~~~");
-            System.out.println("CURRENT BANNER: "+(bann instanceof PremBanner ? "Standard Banner":"Klee Banner")+"\n");
+            System.out.println("CURRENT BANNER: "+(bann instanceof PremBanner ? "Standard Banner":(bann instanceof KleeBanner ? "Klee Banner":"Childe Banner"))+"\n");
             System.out.println("\n1. Pull Single");
             System.out.println("2. Pull Multi");
             System.out.println("3. Pull Custom");
@@ -117,6 +120,10 @@ public class Main {
                     }else if(j == 2){
                         Counter c = bann.getItemCounter();
                         bann = new KleeBanner();
+                        bann.copyCount(c);
+                    }else if(j == 3){
+                        Counter c = bann.getItemCounter();
+                        bann = new ChildeBanner();
                         bann.copyCount(c);
                     }else{
                         System.out.println("Invalid. Staying on Current Banner.");
