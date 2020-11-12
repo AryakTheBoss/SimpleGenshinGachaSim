@@ -29,7 +29,7 @@ public class Main {
             System.out.println("Unknown option picked. set to default banner. You can change in the next Menu.");
             bann = new PremBanner();
         }
-
+            System.gc();
         String re = "";
         while(true) {
 
