@@ -3,8 +3,10 @@ package com.javamaster;
 import javax.swing.*;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class MainMenu {
     private JButton childeBannerButton;
@@ -16,6 +18,7 @@ public class MainMenu {
     private JButton inventoryButton;
     private JPanel mainPanel;
     private JLabel bannerName;
+    private JButton wishNTimesButton;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     private Banner currentBanner = new PremBanner();
     public MainMenu() {
@@ -66,14 +69,45 @@ public class MainMenu {
         inventoryButton.addActionListener(new ActionListener() {
             @Override //showMessageDialog​(Component parentComponent, Object message, String title, int messageType)
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null,currentBanner.printStats(),"Inventory",JOptionPane.WARNING_MESSAGE);
+                String[] options = new String[] {"CLOSE", "RESET"};
+                int response = JOptionPane.showOptionDialog(null, currentBanner.printStats(), "Inventory",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
+                        null, options, options[0]);
+               // JOptionPane.showMessageDialog(null,currentBanner.printStats(),"Inventory",JOptionPane.WARNING_MESSAGE);
+                if(response == 1){
+                    currentBanner.reset();
+                    JOptionPane.showMessageDialog(null,"Inventory has been reset.","Inventory Reset",JOptionPane.WARNING_MESSAGE);
+                }
+            }
+        });
+        wishNTimesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               String s = JOptionPane.showInputDialog("How many times to pull?");
+
+               try {
+                   int n = Integer.parseInt(s);
+                   Counter thisCustom = new Counter();
+                   String cc = "";
+                   for(int i=0;i<n;i++){
+                     cc = currentBanner.pull();
+                     if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * * *")){
+                        thisCustom.countItem(new ItemCount(5,cc.substring(cc.lastIndexOf("*")+1)));
+                     }else{
+                         thisCustom.countItem(new ItemCount(4,cc.substring(cc.lastIndexOf("*")+1)));
+                     }
+                       thisCustom.incrementPulls();
+                   }
+                   JOptionPane.showMessageDialog(null,thisCustom.printStats(),"Result of this Custom Pull",JOptionPane.INFORMATION_MESSAGE);
+               }catch(NumberFormatException f){
+                   JOptionPane.showMessageDialog(null,"That's not a number you dingus >:(");
+               }
+
             }
         });
     }
 
-    public static void main(String[] args) {
 
-    }
     public JPanel returnMain(){
         return mainPanel;
     }
@@ -91,6 +125,7 @@ public class MainMenu {
         // TODO: place custom component creation code here
         list1 = new JList<>();
         bannerName = new JLabel("STANDARD BANNER");
+
 
     }
 }

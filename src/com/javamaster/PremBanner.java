@@ -85,6 +85,7 @@ String name;
         pity5Pulls = 0;
         pity4Pulls = 0;
         itemCounter.reset();
+        currentBannerPulls = 0;
        // numOf3Stars = 0;
     }
 

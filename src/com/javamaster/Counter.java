@@ -39,7 +39,7 @@ public class Counter {
 
         if(stats.isEmpty()){
 
-            return "You have no pulls lol";
+            return "You have no pulls lol\n";
         }
         String result = "";
         for(ItemCount item : stats){

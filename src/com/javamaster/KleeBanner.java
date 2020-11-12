@@ -166,6 +166,7 @@ public class KleeBanner implements Banner { //TODO
         pity5Star = 0;
         pity4Star = 0;
         itemCounter.reset();
+        currentBannerPulls = 0;
     }
 
     @Override
