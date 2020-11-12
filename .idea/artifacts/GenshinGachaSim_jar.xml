@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GenshinGachaSim:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GenshinGachaSim_jar</output-path>
+    <root id="archive" name="GenshinGachaSim.jar">
+      <element id="module-output" name="GenshinGachaSim" />
+    </root>
+  </artifact>
+</component>
