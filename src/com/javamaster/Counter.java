@@ -35,15 +35,17 @@ public class Counter {
                 totalCurrentPulls = 0;
 
         }
-    public void printStats(){
+    public String printStats(){
 
         if(stats.isEmpty()){
-            System.out.println("You have no pulls lol");
-            return;
+
+            return "You have no pulls lol";
         }
+        String result = "";
         for(ItemCount item : stats){
-            System.out.println(item);
+           result += item+"\n";
         }
+        return result;
 
 
 

@@ -1,5 +1,8 @@
 package com.javamaster;
 
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
+
+import javax.swing.*;
 import java.util.Scanner;
 
 public class Main {
@@ -7,33 +10,33 @@ public class Main {
 
     public static void main(String[] args){
 
-        Scanner s = new Scanner(System.in);
+        try {
+            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
+        JFrame frame = new JFrame("MainMenu");
+        MainMenu mm = new MainMenu();
+        frame.setContentPane(mm.returnMain());
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
 
-        int choice = 0;
-        int stars5 = 0;
-        int stars4 = 0;
-        System.out.println("Genshin Pull Sim 2.0 // ~~~~");
+        frame.setVisible(true);
+
+        //Scanner s = new Scanner(System.in);
+
+
+        /*System.out.println("Genshin Pull Sim 2.0 // ~~~~");
         System.out.println("1. Standard");
         System.out.println("2. Klee");
         System.out.println("3. Childe");
-        System.out.println("Pick Banner to Summon from: ");
+        System.out.println("Pick Banner to Summon from: ");*/
 
-        int j = s.nextInt();
-        Banner bann = null;
-        if(j == 1){
-            bann = new PremBanner();
-        }else if(j == 2){
-            bann = new KleeBanner();
-        }else if(j == 3){
-            bann = new ChildeBanner();
-        }else{
-            System.out.println("Unknown option picked. set to default banner. You can change in the next Menu.");
-            bann = new PremBanner();
-        }
-            System.gc();
-        String re = "";
-        while(true) {
 
+
+
+      /*  while(true) {
+            /*
             System.out.println("Genshin Pull Sim 2.0 // ~~~~");
             System.out.println("CURRENT BANNER: "+(bann instanceof PremBanner ? "Standard Banner":(bann instanceof KleeBanner ? "Klee Banner":"Childe Banner"))+"\n");
             System.out.println("\n1. Pull Single");
@@ -140,7 +143,7 @@ public class Main {
 
 
 
-        }
+        }*/
     }
 
 }

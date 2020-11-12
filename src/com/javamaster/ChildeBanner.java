@@ -180,11 +180,13 @@ public class ChildeBanner implements Banner {
     }
 
     @Override
-    public void printStats() {
-        System.out.println("\n"+"STATS: ");
-        itemCounter.printStats();
-        System.out.println("\nPulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls);
-        System.out.println("Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160));
-        System.out.println("Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n");
+    public String printStats() {
+        String result = "";
+       result += "STATS: \n";
+        result += itemCounter.printStats();
+        result += "Pulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls+"\n";
+        result+= "Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160)+"\n";
+        result+= "Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n";
+        return result;
     }
 }

@@ -97,13 +97,14 @@ String name;
     public void printPity(){
         System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
     }
-    public void printStats(){
-        System.out.println("\n"+"STATS: ");
-        itemCounter.printStats();
-        System.out.println("\nTotal Pulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls);
-        System.out.println("Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160));
-        System.out.println("Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n");
-        //System.out.println("3 Stars Pulled: "+numOf3Stars);
+    public String printStats(){
+        String result = "";
+        result += "STATS: \n";
+        result += itemCounter.printStats();
+        result += "Pulls So far: "+itemCounter.getTotalCurrentPulls()+" Pulls on this Banner: "+currentBannerPulls+"\n";
+        result+= "Primogems Spent: "+(itemCounter.getTotalCurrentPulls()*160)+"\n";
+        result+= "Approximate Money Spent (Includes NJ Sales Tax): ~$"+itemCounter.estimateDollars()+"\n";
+        return result;
     }
 
 

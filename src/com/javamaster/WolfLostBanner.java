@@ -24,8 +24,8 @@ public class WolfLostBanner implements Banner {
     }
 
     @Override
-    public void printStats() {
-
+    public String printStats() {
+        return null;
     }
 
     @Override

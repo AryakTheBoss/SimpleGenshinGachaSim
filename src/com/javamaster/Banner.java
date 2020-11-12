@@ -11,7 +11,7 @@ public interface Banner {
     void setPities(int four,int five);
 
     void printPity();
-    void printStats();
+    String printStats();
     void copyCount(Counter ic);
     Counter getItemCounter();
 
