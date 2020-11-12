@@ -17,6 +17,7 @@ public class Main {
         System.out.println("2. Klee");
         System.out.println("3. Childe");
         System.out.println("Pick Banner to Summon from: ");
+
         int j = s.nextInt();
         Banner bann = null;
         if(j == 1){
