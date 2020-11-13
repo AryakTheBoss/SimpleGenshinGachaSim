@@ -95,6 +95,14 @@ public class MainMenu {
                    String cc = "";
                    for(int i=0;i<n;i++){
                      cc = currentBanner.pull();
+                     if(i % 10 == 0){
+
+                         clearList();
+                     }else{
+                         addToJList(cc);
+
+                     }
+
                      if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * * *")){
                         thisCustom.countItem(new ItemCount(5,cc.substring(cc.lastIndexOf("*")+1)));
                      }else if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * *")){
