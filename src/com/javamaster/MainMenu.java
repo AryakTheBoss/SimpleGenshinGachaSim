@@ -53,16 +53,20 @@ public class MainMenu {
         wishX1Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String drop = "";
                 clearList();
-                addToJList(currentBanner.pull());
+                drop = currentBanner.pull();
+                addToJList(drop);
             }
         });
         wishX10Button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String drop = "";
                 clearList();
                 for(int i=0;i<10;i++){
-                    addToJList(currentBanner.pull());
+                    drop = currentBanner.pull();
+                    addToJList(drop);
                 }
             }
         });
@@ -93,12 +97,12 @@ public class MainMenu {
                      cc = currentBanner.pull();
                      if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * * *")){
                         thisCustom.countItem(new ItemCount(5,cc.substring(cc.lastIndexOf("*")+1)));
-                     }else{
+                     }else if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * *")){
                          thisCustom.countItem(new ItemCount(4,cc.substring(cc.lastIndexOf("*")+1)));
                      }
                        thisCustom.incrementPulls();
                    }
-                   JOptionPane.showMessageDialog(null,thisCustom.printStats(),"Result of this Custom Pull",JOptionPane.INFORMATION_MESSAGE);
+                   JOptionPane.showMessageDialog(null,thisCustom.printStats()+"\nPulls: "+thisCustom.getTotalCurrentPulls(),"Result of this Custom Pull",JOptionPane.INFORMATION_MESSAGE);
                }catch(NumberFormatException f){
                    JOptionPane.showMessageDialog(null,"That's not a number you dingus >:(");
                }
@@ -114,6 +118,8 @@ public class MainMenu {
     public void addToJList(String element){
         listModel.addElement(element);
         list1.setModel(listModel);
+
+
     }
     public void clearList(){
        listModel.clear();
@@ -125,7 +131,22 @@ public class MainMenu {
         // TODO: place custom component creation code here
         list1 = new JList<>();
         bannerName = new JLabel("STANDARD BANNER");
-
+        list1.setCellRenderer(new DefaultListCellRenderer() {
+            public Component getListCellRendererComponent(JList list, Object value,
+                                                          int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected,
+                        cellHasFocus);
+                String item = (String)value;
+                if (item.substring(0,item.lastIndexOf("*")+1).equals("* * * * *")) {
+                    setBackground(Color.ORANGE);
+                }else if(item.substring(0,item.lastIndexOf("*")+1).equals("* * * *")){
+                    setBackground(Color.MAGENTA);
+                }else{
+                    setBackground(Color.CYAN);
+                }
+                return this;
+            }
+        });
 
     }
 }
