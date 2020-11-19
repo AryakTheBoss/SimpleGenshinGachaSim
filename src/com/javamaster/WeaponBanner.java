@@ -1,6 +1,6 @@
 package com.javamaster;
 
-public class WolfLostBanner implements Banner {
+public class WeaponBanner implements Banner{
 
 
     @Override
