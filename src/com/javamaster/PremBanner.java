@@ -1,6 +1,5 @@
 package com.javamaster;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class PremBanner implements Banner {
@@ -43,14 +42,14 @@ String name;
                     pity5Pulls = 0;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star5[gen.nextInt(star5.length)];
-                    itemCounter.countItem(new ItemCount(5,name));
+                    itemCounter.countItem(new Item(5,name));
                     return "* * * * * "+name;
                 }else if(pity() == 2){
                     pity4Pulls = 0;
                     pity5Pulls++;
                   //  System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star4[gen.nextInt(star4.length)];
-                    itemCounter.countItem(new ItemCount(4,name));
+                    itemCounter.countItem(new Item(4,name));
                     return "* * * * "+name;
                 }
 
@@ -59,14 +58,14 @@ String name;
                     pity5Pulls = 0;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star5[gen.nextInt(star5.length)];
-                    itemCounter.countItem(new ItemCount(5,name));
+                    itemCounter.countItem(new Item(5,name));
                     return "* * * * * "+name;
                 }else if(n >= 31 && n <= 286){ //255 vals
                     pity4Pulls = 0;
                     pity5Pulls++;
                    // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
                     name = star4[gen.nextInt(star4.length)];
-                    itemCounter.countItem(new ItemCount(4,name));
+                    itemCounter.countItem(new Item(4,name));
                     return "* * * * "+name;
                 }else{
                     pity5Pulls++;

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Counter {
 
-    private ArrayList<ItemCount> stats = new ArrayList<ItemCount>();
+    private ArrayList<Item> stats = new ArrayList<Item>();
     private int totalCurrentPulls;
 
     public Counter(){
@@ -19,8 +19,8 @@ public class Counter {
     public int getTotalCurrentPulls(){
         return totalCurrentPulls;
     }
-    public void countItem(ItemCount i){
-        for(ItemCount item : stats){
+    public void countItem(Item i){
+        for(Item item : stats){
             if(item.equals(i)){
                 item.increment();
                 return;
@@ -42,7 +42,7 @@ public class Counter {
             return "You have no pulls lol\n";
         }
         String result = "";
-        for(ItemCount item : stats){
+        for(Item item : stats){
            result += item+"\n";
         }
         return result;

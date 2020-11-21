@@ -53,20 +53,20 @@ public class ChildeBanner implements Banner {
             if(promo5G){
                 promo5G = false;
                 name = "Tartaglia (Childe)";
-                itemCounter.countItem(new ItemCount(5,name));
+                itemCounter.countItem(new Item(5,name));
                 return "* * * * * "+name;
             }
             boolean fiftyfifty = gen.nextBoolean();
             if(fiftyfifty){
                 promo5G = false;
                 name = "Tartaglia (Childe)";
-                itemCounter.countItem(new ItemCount(5,name));
+                itemCounter.countItem(new Item(5,name));
                 return "* * * * * "+name;
             }else{
                 promo5G = true;
             }
             name = star5[gen.nextInt(star5.length)];
-            itemCounter.countItem(new ItemCount(5,name));
+            itemCounter.countItem(new Item(5,name));
             return "* * * * * "+name;
 
         }else if(pity() == 2){
@@ -75,21 +75,21 @@ public class ChildeBanner implements Banner {
             if(promo4G){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
-                itemCounter.countItem(new ItemCount(4,name));
+                itemCounter.countItem(new Item(4,name));
                 return "* * * * "+name;
             }
             boolean fiftyfifty = gen.nextBoolean();
             if(fiftyfifty){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
-                itemCounter.countItem(new ItemCount(4,name));
+                itemCounter.countItem(new Item(4,name));
                 return "* * * * "+name;
             }else{
                 promo4G = true;
             }
             //  System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
             name = star4[gen.nextInt(star4.length)];
-            itemCounter.countItem(new ItemCount(4,name));
+            itemCounter.countItem(new Item(4,name));
             return "* * * * "+name;
         }
 
@@ -99,21 +99,21 @@ public class ChildeBanner implements Banner {
             if(promo5G){
                 promo5G = false;
                 name = "Tartaglia (Childe)";
-                itemCounter.countItem(new ItemCount(5,name));
+                itemCounter.countItem(new Item(5,name));
                 return "* * * * * "+name;
             }
             boolean fiftyfifty = gen.nextBoolean();
             if(fiftyfifty){
                 promo5G = false;
                 name = "Tartaglia (Childe)";
-                itemCounter.countItem(new ItemCount(5,name));
+                itemCounter.countItem(new Item(5,name));
                 return "* * * * * "+name;
             }else{
                 promo5G = true;
             }
             // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
             name = star5[gen.nextInt(star5.length)];
-            itemCounter.countItem(new ItemCount(5,name));
+            itemCounter.countItem(new Item(5,name));
             return "* * * * * "+name;
         }else if(n >= 31 && n <= 286){ //255 vals
             pity4Star = 0;
@@ -121,21 +121,21 @@ public class ChildeBanner implements Banner {
             if(promo4G){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
-                itemCounter.countItem(new ItemCount(4,name));
+                itemCounter.countItem(new Item(4,name));
                 return "* * * * "+name;
             }
             boolean fiftyfifty = gen.nextBoolean();
             if(fiftyfifty){
                 promo4G = false;
                 name = star4Promo[gen.nextInt(star4Promo.length)];
-                itemCounter.countItem(new ItemCount(4,name));
+                itemCounter.countItem(new Item(4,name));
                 return "* * * * "+name;
             }else{
                 promo4G = true;
             }
             // System.out.println("Pity 5: "+pity5Pulls+" Pity 4: "+pity4Pulls);
             name = star4[gen.nextInt(star4.length)];
-            itemCounter.countItem(new ItemCount(4,name));
+            itemCounter.countItem(new Item(4,name));
             return "* * * * "+name;
         }else{
             pity5Star++;

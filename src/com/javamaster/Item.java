@@ -1,12 +1,12 @@
 package com.javamaster;
 
-public class ItemCount {
+public class Item {
 
     private int stars;
     private String name;
     private int count;
 
-    public ItemCount(int stars,String name){
+    public Item(int stars, String name){
         count = 1;
         this.name = name;
         this.stars = stars;
@@ -23,8 +23,8 @@ public class ItemCount {
         return this.stars;
    }
     public boolean equals(Object other){
-        if(other instanceof ItemCount){
-           ItemCount ic = (ItemCount) other;
+        if(other instanceof Item){
+           Item ic = (Item) other;
            if(ic.getName().equals(this.name) && ic.getStars() == stars){
                return true;
            }

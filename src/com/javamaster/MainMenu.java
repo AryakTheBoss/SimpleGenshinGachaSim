@@ -1,12 +1,10 @@
 package com.javamaster;
 
 import javax.swing.*;
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 public class MainMenu {
     private JButton childeBannerButton;
@@ -105,9 +103,9 @@ public class MainMenu {
                      }
 
                      if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * * *")){
-                        thisCustom.countItem(new ItemCount(5,cc.substring(cc.lastIndexOf("*")+1)));
+                        thisCustom.countItem(new Item(5,cc.substring(cc.lastIndexOf("*")+1)));
                      }else if(cc.substring(0,cc.lastIndexOf("*")+1).equals("* * * *")){
-                         thisCustom.countItem(new ItemCount(4,cc.substring(cc.lastIndexOf("*")+1)));
+                         thisCustom.countItem(new Item(4,cc.substring(cc.lastIndexOf("*")+1)));
                      }
                        thisCustom.incrementPulls();
                    }
