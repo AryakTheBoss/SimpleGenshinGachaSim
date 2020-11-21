@@ -19,6 +19,7 @@ public class MainMenu {
     private JPanel mainPanel;
     private JLabel bannerName;
     private JButton wishNTimesButton;
+    private JButton weaponBannerButton;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     private Banner currentBanner = new PremBanner();
     public MainMenu() {
@@ -115,6 +116,15 @@ public class MainMenu {
                    JOptionPane.showMessageDialog(null,"That's not a number you dingus >:(");
                }
 
+            }
+        });
+        weaponBannerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                bannerName.setText("WEAPON BANNER");
+                Counter c = currentBanner.getItemCounter();
+                currentBanner = new WeaponBanner();
+                currentBanner.copyCount(c);
             }
         });
     }
